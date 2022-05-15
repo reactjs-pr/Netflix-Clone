@@ -39,7 +39,7 @@ async function handleAddFav(e,movie) {
     comment: movie.comment
   }
 
-
+let url = "https://movies-bahaa.herokuapp.com/addMovie";
 let response = await fetch(url, {
   method: 'POST',
   headers: {
