@@ -35,6 +35,29 @@ export default function Home() {
   
   }
 
+  
+  function updatedMovie(newRecipe, id) {
+    let updatedMovies = movies.map((movie) => {
+        if (movie.id === id) {
+          movie.comment = newRecipe.userComment;
+            return movie;
+        } else {
+            return movie;
+        }
+    })
+
+    setMovies(updatedMovies);
+
+}
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     getMovie();
   }, []);
@@ -51,7 +74,7 @@ export default function Home() {
         }}
         >
 
-        <MovieList movies={movies} />
+        <MovieList movies={movies} updatedMovie={updatedMovie} />
 
       </div>
         </Container>

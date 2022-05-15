@@ -1,7 +1,62 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useRef } from "react";
+
 export default function ModalMovie(props) {
+
+
+  let commentRef = useRef();
+
+function handleComment(e){
+
+  e.preventDefault();
+
+  let userComment = commentRef.current.value;
+
+  console.log({userComment})
+
+
+  let newMovie = { ...props.chosenMovie, userComment };
+
+  props.updatedMovie(newMovie, props.chosenMovie.id);
+
+
+}
+
+
+async function handleAddFav(e,movie) {
+
+  e.preventDefault();
+  let url = "https://movies-bahaa.herokuapp.com/addMovie";
+
+  
+
+  let data = {
+    name: movie.title,
+    time: movie.release_date,
+    summary: movie.overview,
+    image: movie.poster_path,
+    comment: movie.comment
+  }
+
+
+let response = await fetch(url, {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data),
+})
+
+let addedRecipe = await response.json();
+console.log("addedRecipe", addedRecipe);
+
+
+
+}
+
+
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -32,7 +87,8 @@ export default function ModalMovie(props) {
             src={`https://image.tmdb.org/t/p/w400/${props.chosenMovie.poster_path}`}
             alt="Movie poster"
           />
-
+ <br />
+                    {props.chosenMovie.comment ? props.chosenMovie.comment : "No comment is added"}
 
 
 
@@ -46,8 +102,23 @@ export default function ModalMovie(props) {
             }}
             >
               <Form.Label>Add Comment</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control ref={commentRef} as="textarea" rows={3} />
             </Form.Group>
+        
+            <Button variant="primary" type="submit" onClick={(e)=>handleComment(e)} >
+             Submit
+            </Button>
+
+
+
+            <Button variant="primary" type="submit" onClick={(e) => { handleAddFav(e, props.chosenMovie) }}>
+                            Add to favorites
+                        </Button>
+
+
+
+
+
           </Form>
 
 

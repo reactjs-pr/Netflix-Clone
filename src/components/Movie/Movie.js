@@ -61,6 +61,7 @@ export default function Movie(props) {
       
       {chosenMovie && (
         <ModalMovie
+        updatedMovie={props.updatedMovie}
           show={show}
           handleClose={handleClose}
           chosenMovie={chosenMovie}
