@@ -28,7 +28,6 @@ function handleComment(e){
 async function handleAddFav(e,movie) {
 
   e.preventDefault();
-  let url = "https://movies-bahaa.herokuapp.com/addMovie";
 
   
 

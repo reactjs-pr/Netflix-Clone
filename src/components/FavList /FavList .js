@@ -6,7 +6,7 @@ export default function FavList() {
   const [favMovies, setFavMovies] = useState();
 
   async function getFavMovies() {
-    let url = 'https://movies-bahaa.herokuapp.com/getMovies';
+
     let response = await fetch(url, {
       method: 'GET',
     });
