@@ -2,6 +2,7 @@ import ModalMovie from "../ModalMovie/ModalMovie";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { Container } from "react-bootstrap";
 
 export default function Movie(props) {
 
@@ -19,6 +20,8 @@ export default function Movie(props) {
   };
   return (
     <>
+    
+    
       <Card
         style={{
           padding: "20px",
@@ -63,6 +66,7 @@ export default function Movie(props) {
           chosenMovie={chosenMovie}
         />
       )}
+
     </>
   );
 }
