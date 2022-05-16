@@ -6,12 +6,28 @@ import Nav from "react-bootstrap/Nav";
 export default function nav() {
   return (
     <>
-      <Navbar bg= "#7F8487" variant="dark">
+      <Navbar  variant="dark">
         <Container>
-          <Navbar.Brand href="/">Home</Navbar.Brand>
+          <Navbar.Brand 
+          
+          style={{
+color:"black"
+
+
+          }}
+          
+          href="/">Home</Navbar.Brand>
 
           <Nav className="me-auto">
-            <Nav.Link href="/FavList"> FavList </Nav.Link>
+            <Nav.Link
+                  style={{
+                    color:"black"
+                    
+                    
+                              }}
+            
+            
+            href="/FavList"> FavList </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
