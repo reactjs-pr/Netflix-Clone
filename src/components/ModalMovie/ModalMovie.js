@@ -28,18 +28,18 @@ function handleComment(e){
 async function handleAddFav(e,movie) {
 
   e.preventDefault();
+  let url = "https://movie-library-01.herokuapp.com/addMovie";
 
   
-
   let data = {
-    name: movie.title,
-    time: movie.release_date,
-    summary: movie.overview,
-    image: movie.poster_path,
+    title: movie.title,
+    release_date: movie.release_date,
+    poster_path: movie.poster_path,
+    overview: movie.overview,
     comment: movie.comment
-  }
+}
 
-let url = "https://movies-bahaa.herokuapp.com/addMovie";
+
 let response = await fetch(url, {
   method: 'POST',
   headers: {
@@ -87,7 +87,13 @@ console.log("addedRecipe", addedRecipe);
             alt="Movie poster"
           />
  <br />
-                    {props.chosenMovie.comment ? props.chosenMovie.comment : "No comment is added"}
+              <div
+              
+              style={{textAlign:"center",
+              padding:"10px"
+            
+            }}
+              >      {props.chosenMovie.comment ? props.chosenMovie.comment : "No comment is added"} </div>
 
 
 
@@ -100,20 +106,43 @@ console.log("addedRecipe", addedRecipe);
             
             }}
             >
-              <Form.Label>Add Comment</Form.Label>
+              <Form.Label
+              
+              style={{textAlign:"center",
+              padding:"10px",
+            
+            
+            }}
+              
+              >Add Comment</Form.Label>
               <Form.Control ref={commentRef} as="textarea" rows={3} />
             </Form.Group>
+        <div
         
-            <Button variant="primary" type="submit" onClick={(e)=>handleComment(e)} >
-             Submit
+         
+        style={{textAlign:"center",
+        padding:"10px",
+      
+      
+      }}
+        >
+            <Button
+
+
+            variant="primary" type="submit" onClick={(e)=>handleComment(e)} >
+            Add Comment
             </Button>
 
 
 
-            <Button variant="primary" type="submit" onClick={(e) => { handleAddFav(e, props.chosenMovie) }}>
+            <Button 
+            
+            style={{marginLeft:"10px"}}
+
+            variant="primary" type="submit" onClick={(e) => { handleAddFav(e, props.chosenMovie) }}>
                             Add to favorites
                         </Button>
-
+</div>
 
 
 
@@ -128,9 +157,7 @@ console.log("addedRecipe", addedRecipe);
           <Button variant="secondary" onClick={props.handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={props.handleClose}>
-            Save Changes
-          </Button>
+          
         </Modal.Footer>
       </Modal>
     </>
